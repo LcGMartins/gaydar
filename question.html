@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAYDAR GRÁTIS</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to bottom, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787);
+    }
+
+    .container {
+        text-align: center;
+    }
+    
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    
+    #rangeInput {
+      width: 300px;
+      appearance: none;
+      height: 10px;
+      background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      outline: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    
+    #rangeInput::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+    
+    #rangeInput::-moz-range-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+    }
+    
+    #selectedValue {
+      margin-top: 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    #confirmButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #additionalButton {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 18px;
+        margin-top: 20px;
+        cursor: pointer;
+        animation: pulsate 1s infinite;
+        
+    }
+
+    @keyframes pulsate {
+      0%, 100% {
+        transform: scale(1);
+        background-color: #e40303;
+      }
+      16.6% {
+        transform: scale(1.2);
+        background-color: #ff8c00;
+      }
+      33.3% {
+        transform: scale(1.3);
+        background-color: #ffed00;
+      }
+      50% {
+        transform: scale(1);
+        background-color: #008026;
+      }
+      66.6% {
+        transform: scale(1.2);
+        background-color: #004dff;
+      }
+      83.3% {
+        transform: scale(1.3);
+        background-color: #750787;
+      }
+    }
+    
+    #message {
+        text-align: center;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #d80d0d;
+      background-color: white;
+      width: 700px;
+      border-radius: 10px;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #161616;
+      text-align: center;
+      font-size: 18px;
+      color: #f8f8f8;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>De 0 à 10, o quanto você se acha homossexual?</h1>
+        <input type="range" id="rangeInput" min="0" max="10" step="1">
+        <p id="selectedValue">5</p>
+        <button id="confirmButton">Confirmar</button>
+        <p id="message"></p>
+        <a href="question2.html" id="additionalButton" style="display: none;">Avançar</a>
+      </div>
+      <footer>
+        <p>© 2023 Lucas G. Martins. Todos os direitos reservados.</p>
+      </footer>
+      <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+        const confirmButton = document.getElementById('confirmButton');
+        const additionalButton = document.getElementById('additionalButton');
+        const message = document.getElementById('message');
+        
+        rangeInput.addEventListener('input', () => {
+          const value = rangeInput.value;
+          selectedValue.textContent = value;
+        });
+        
+        confirmButton.addEventListener('click', () => {
+          const value = rangeInput.value;
+          confirmValue(value);
+        });
+        
+        function confirmValue(value) {
+            if (value <= 6) {
+        message.textContent = 'Não precisa mentir, estamos entre amigos!';
+        additionalButton.style.display = 'none';
+      } else {
+        message.textContent = 'Parabéns por assumir, mas todo mundo já sabia.';
+        additionalButton.style.display = 'block';
+      }
+    }
+    </script>
+</body>
+
+</body>
+</html>
